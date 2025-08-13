@@ -16,7 +16,7 @@ pipeline{
         stage('Download Dependencies'){
             steps{
                 container('golang-agent'){
-                    sh 'go mod download'
+                    sh 'go mod tidy'
                 }
             }
         }
