@@ -1,0 +1,12 @@
+{
+    "LIBRARY_NAME": "sirupsen/logrus",
+    "IMPORT_PATH" : "github.com/sirupsen/logrus",
+    "VERSION" : "v1.4.2",
+    "MESSAGES"  : {
+        "ERROR" : "logrus.WithFields(logrus.Fields{\"User\": \"walrus\",}).Error(\"This is an error message\")",
+        "INFO" : "logrus.WithFields(logrus.Fields{\"User\": \"walrus\",}).Info(\"This is an info message\")",
+        "WARN" : "logrus.WithFields(logrus.Fields{\"User\": \"walrus\",}).Warn(\"This is a warning message\")",
+        "FATAL" : "logrus.WithFields(logrus.Fields{\"User\": \"walrus\",}).Fatal(\"This is a fatal message\")",
+        "DEBUG" : "logrus.WithFields(logrus.Fields{\"User\": \"walrus\",}).Debug(\"This is a debug message\")"
+    }
+} 

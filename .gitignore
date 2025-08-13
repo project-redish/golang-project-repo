@@ -1,0 +1,8 @@
+go.sum
+go.sum
+output
+outputzip
+template/go.sum
+template/*/go.sum
+tempate/*/*/go.sum
+tempate/*/*/*/go.sum
