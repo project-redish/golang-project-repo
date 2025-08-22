@@ -1,0 +1,36 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "This is a sample API for demonstration.",
+        "title": "My Go API",
+        "contact": {},
+        "version": "1.0"
+    },
+    "host": "localhost:8080",
+    "basePath": "/",
+    "paths": {
+        "/greet": {
+            "get": {
+                "description": "Returns a simple greeting message",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "greetings"
+                ],
+                "summary": "Get a greeting",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

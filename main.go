@@ -1,32 +1,43 @@
 package main
 
 import (
-	"fmt"
-	handle "go-initializer/handler"
-	"go-initializer/server"
-	"os"
-	"os/signal"
-	"syscall"
+	_ "golang-project-repo/docs"
+	"log"
+	"net/http"
+
+	httpSwagger "github.com/swaggo/http-swagger"
 )
 
+const (
+	port = ":8080"
+)
+
+// @title My Go API
+// @version 1.0
+// @description This is a sample API for demonstration.
+// @host localhost:8080
+// @BasePath /
 func main() {
 
-	cleanUp := make(chan int, 1)
+	http.Handle("/swagger/", httpSwagger.WrapHandler)
 
-	webServer := server.Create(cleanUp)
-	webServer.RegisterRoute()
-	go webServer.Run(":8080")
+	http.HandleFunc("/greet", greetingHandler)
 
-	//this is dynamic part every cli will get registered through this TODO: create this kind of feature for rest also. for future releases
-	go handle.RegisterCli()
-
-	stopChan := make(chan os.Signal, 2)
-
-	signal.Notify(stopChan, os.Interrupt, syscall.SIGTERM)
-	{
-		fmt.Println(<-stopChan)
-		fmt.Println("exiting ")
+	log.Println("Starting Server on port", port)
+	err := http.ListenAndServe(port, nil)
+	if err != nil {
+		log.Fatalln("Error starting server", err)
 
 	}
+}
 
+// @Summary Get a greeting
+// @Description Returns a simple greeting message
+// @Tags greetings
+// @Accept json
+// @Produce json
+// @Success 200 {string} string "OK"
+// @Router /greet [get]
+func greetingHandler(w http.ResponseWriter, r *http.Request) {
+	w.Write([]byte("Hello World"))
 }
